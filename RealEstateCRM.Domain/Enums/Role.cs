@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Enums
 {
-    internal class Role
+    public enum Role
     {
+        Unregistered,
+        Registered,
+        Realtor,
+        Manager,
+        Broker,
+        Admin,
+        SuperAdmin,
     }
 }
