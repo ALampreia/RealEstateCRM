@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.Domain.Common
+namespace RealEstateCRM.Data.Repositories
 {
-    internal class Entity : IEntity
+    internal class ContactRepository
     {
     }
 }

@@ -11,7 +11,7 @@ namespace RealEstateCRM.IoC
     {
         public static IServiceCollection AddData(this IServiceCollection services)
         {
-            services.AddScoped ();
+            services.AddScoped (3);
         }
     }
 }

@@ -17,4 +17,6 @@ namespace RealEstateCRM.Domain.Model
         public string TaxNumber { get; set; }
         public Role Role { get; set; }
     }
+
+
 }

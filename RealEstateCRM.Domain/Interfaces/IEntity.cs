@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.Domain.Common
+namespace RealEstateCRM.Domain.Interfaces
 {
-    internal class Entity : IEntity
+    public interface IEntity
     {
     }
 }
