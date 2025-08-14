@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Interfaces
 {
-    public interface IAuditableEntity
+    public interface IAuditableEntity<TUserId>
     {
-        public DateTime CreatedAt { get; set; }
-        public TUser CreatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public TUser? UpdatedBy { get; set; }
+        public DateTime CreatedAt { get;}
+        public TUserId CreatedBy { get;}
+        public DateTime? UpdatedAt { get;}
+        public TUserId? UpdatedBy { get;}
+
+        void Create(DateTime created);
+        void Update(DateTime updated);
+
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Model
 {
-    internal class Name
+    public class Name
     {
         public string FirstName { get; private set; }
         public string MiddleNames { get; private set; }

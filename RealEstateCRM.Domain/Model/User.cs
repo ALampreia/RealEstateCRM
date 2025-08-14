@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Model
 {
-    public class User
+    public class User 
     {
-        public Name Name { get; set; }
+        public Guid Id { get; private set; }
+        public Name Name { get; }
         public List<Address> Addresses { get; set; }
         public List<Contact> Contacts { get; set; }
         public Account Account { get; set; }

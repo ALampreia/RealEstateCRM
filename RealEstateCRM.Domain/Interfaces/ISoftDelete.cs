@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Interfaces
 {
-    internal interface ISoftDelete
+    public interface ISoftDelete
     {
+        public bool IsDeleted { get; }
+        public void Delete();
     }
 }

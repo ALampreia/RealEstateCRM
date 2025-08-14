@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Interfaces
 {
-    public interface IEntity
+    public interface IEntity<TId>
     {
+        public TId Id { get; };
     }
 }
