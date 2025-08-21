@@ -1,4 +1,5 @@
-﻿using RealEstateCRM.Domain.Enums;
+﻿using RealEstateCRM.Domain.Common;
+using RealEstateCRM.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Model
 {
-    public class User 
+    public class User : AuditableEntity<Guid>
     {
         public Guid Id { get; private set; }
         public Name Name { get; }
@@ -17,6 +18,7 @@ namespace RealEstateCRM.Domain.Model
         public List<Favorite> Favorites { get; set; }
         public string TaxNumber { get; set; }
         public Role Role { get; set; }
+        public string PhotoUrl { get; set; }
     }
 
 

@@ -32,6 +32,15 @@ namespace RealEstateCRM.Domain.Model
         }
         public static Account Create(string email, string passwordHash, string passwordSalt, Guid userId)
         {
+            if(string.IsNullOrWhiteSpace(email))
+                throw new ArgumentException("Email is required", nameof(email));
+            if(string.IsNullOrWhiteSpace(passwordHash))
+                throw new ArgumentException("Password hash is required", nameof(passwordHash));
+            if(string.IsNullOrWhiteSpace(passwordSalt))
+                throw new ArgumentException("Password salt is required", nameof(passwordSalt));
+            if(userId == Guid.Empty)
+                throw new ArgumentException("User not found", nameof(userId));
+
             return new Account(email, passwordHash, passwordSalt, userId);
         } 
     }

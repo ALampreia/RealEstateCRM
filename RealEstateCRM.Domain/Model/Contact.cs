@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Model
 {
-    internal class Contact
+    public class Contact
     {
+
     }
 }

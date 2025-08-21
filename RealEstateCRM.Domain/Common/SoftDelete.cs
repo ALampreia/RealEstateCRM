@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Common
 {
-    internal class SoftDelete
+    public class SoftDelete
     {
     }
 }
