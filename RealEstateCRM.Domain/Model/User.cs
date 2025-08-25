@@ -12,14 +12,29 @@ namespace RealEstateCRM.Domain.Model
     {
         public Guid Id { get; private set; }
         public Name Name { get; }
-        public List<Address> Addresses { get; set; }
-        public List<Contact> Contacts { get; set; }
-        public Account Account { get; set; }
-        public List<Favorite> Favorites { get; set; }
-        public string TaxNumber { get; set; }
-        public Role Role { get; set; }
-        public string PhotoUrl { get; set; }
+        public List<Address> Addresses { get; private set; }
+        public List<Contact> Contacts { get; private set; }
+        public Account Account { get; private set; }
+        public List<Favorite> Favorites { get; private set; }
+        public string TaxNumber { get; private set; }
+        public Role Role { get; private set; }
+        public string PhotoUrl { get; private set; }
+        public bool IsActive { get; private set; }
+        private User()
+        {
+            Addresses = new List<Address>();
+            Contacts = new List<Contact>();
+            Favorites = new List<Favorite>();
+            Account = null!;
+            IsActive = true;
+        }
+
+        public User(Guid id, Name name, string taxNumber, Role role, string photoUrl) : this()
+        {
+            Id = id;
+            Name = name;
+            TaxNumber = taxNumber;
+            Role = role;
+        }
     }
-
-
 }

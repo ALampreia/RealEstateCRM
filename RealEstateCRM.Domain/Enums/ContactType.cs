@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Enums
 {
-    internal class ContactType
+    public enum ContactType
     {
+        Mobile,
+        Landline,
+        Email,
+        Other
     }
 }

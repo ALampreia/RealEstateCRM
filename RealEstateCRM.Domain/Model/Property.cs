@@ -89,7 +89,6 @@ namespace RealEstateCRM.Domain.Model
             Amenities = amenities ?? new List<string>();
         }
 
-        public 
         public void ChangeRealtorAndManager(User broker, User newRealtor, User newManager)
         {
             if(broker == null) throw new ArgumentNullException("Broker not found", nameof(broker));

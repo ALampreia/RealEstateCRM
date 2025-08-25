@@ -2,6 +2,7 @@
 using RealEstateCRM.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,32 +17,67 @@ namespace RealEstateCRM.Domain.Model
         public string PasswordSalt { get; private set; }
         public Guid UserId { get; private set; }
         public User User { get; private set; }
-        private Account()
-        { 
-            Email = string.Empty;
-            PasswordHash = string.Empty;
-            PasswordSalt = string.Empty;
-        }
-        private Account(string email, string passwordHash, string passwordSalt, Guid userId) : this() 
+        private Account(){}
+        private Account(string email, string passwordHash, string passwordSalt, Guid userId, User user) : this() 
         {            
            Id = Guid.NewGuid();
            Email = email;
            PasswordHash = passwordHash;
            PasswordSalt = passwordSalt;
            UserId = userId;
+           User = user;
         }
-        public static Account Create(string email, string passwordHash, string passwordSalt, Guid userId)
+        private static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static Account Create(string email, string passwordHash, string passwordSalt, Guid userId, User user)
         {
             if(string.IsNullOrWhiteSpace(email))
                 throw new ArgumentException("Email is required", nameof(email));
-            if(string.IsNullOrWhiteSpace(passwordHash))
+            if(!IsValidEmail(email))
+                throw new ArgumentException("Email is not valid", nameof(email));
+            if (string.IsNullOrWhiteSpace(passwordHash))
                 throw new ArgumentException("Password hash is required", nameof(passwordHash));
             if(string.IsNullOrWhiteSpace(passwordSalt))
                 throw new ArgumentException("Password salt is required", nameof(passwordSalt));
             if(userId == Guid.Empty)
                 throw new ArgumentException("User not found", nameof(userId));
+            if (user == null)
+                throw new ArgumentNullException(nameof(user), "User is required");
 
-            return new Account(email, passwordHash, passwordSalt, userId);
+            return new Account(email, passwordHash, passwordSalt, userId, user);
         } 
+
+        public void Update(string email, string passwordHash, string passwordSalt)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                throw new ArgumentException("Email is required", nameof(email));
+            if (!IsValidEmail(email))
+                throw new ArgumentException("Email is not valid", nameof(email));
+            if (string.IsNullOrWhiteSpace(passwordHash))
+                throw new ArgumentException("Password hash is required", nameof(passwordHash));
+            if (string.IsNullOrWhiteSpace(passwordSalt))
+                throw new ArgumentException("Password salt is required", nameof(passwordSalt));
+
+            Email = Email;
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
+            Update(DateTime.UtcNow);
+
+        }
+
+        public void Delete()
+        {
+            base.Delete();
+        }
     }
 }
