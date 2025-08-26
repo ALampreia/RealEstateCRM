@@ -8,7 +8,6 @@ namespace RealEstateCRM.Domain.Enums
 {
     public enum Role
     {
-        Unregistered,
         Registered,
         Realtor,
         Manager,
