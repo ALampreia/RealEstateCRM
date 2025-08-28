@@ -11,7 +11,7 @@ namespace RealEstateCRM.Domain.Model
     public class User : AuditableEntity<Guid>
     {
         public Guid Id { get; private set; }
-        public Name Name { get; }
+        public Name Name { get; private set; }
         public List<Address> Addresses { get; private set; }
         public List<Contact> Contacts { get; private set; }
         public Account Account { get; private set; }
@@ -28,7 +28,6 @@ namespace RealEstateCRM.Domain.Model
             Account = null!;
             IsActive = true;
         }
-
         public User(Guid id, Name name, string taxNumber, Role role) : this()
         {
             Id = id;
@@ -67,7 +66,64 @@ namespace RealEstateCRM.Domain.Model
             
             return user;
         }
+        public void AddAddress(Address address)
+        {
+            if(address == null)
+                throw new ArgumentNullException(nameof(address), "Address is required");
 
-        public void Update()
+            Addresses.Add(address);
+        }
+        public void UpdateAddress(Guid addressId, string addressLineOne, string AddressLineTwo, string city, string state, string zipCode, string country)
+        {
+            Address address = Addresses.FirstOrDefault(a => a.Id == addressId);
+                if(address == null)
+                    throw new ArgumentException("Address not found", nameof(addressId));
+                address.Update(addressLineOne, AddressLineTwo, city, state, zipCode, country);
+        }
+        public void DeleteAddress(Guid addressId)
+        {
+            Address address = Addresses.FirstOrDefault(a => a.Id == addressId);
+            if (address == null)
+                throw new ArgumentException("Address not found", nameof(addressId));
+            Addresses.Remove(address);
+        }
+        public void UpdateName(Name newName)
+        {
+            if(newName == null)
+                throw new ArgumentNullException(nameof(newName), "Name is required");
+            if(string.IsNullOrWhiteSpace(newName.FirstName))
+                throw new ArgumentException("First name is required", nameof(newName.FirstName));
+            if(string.IsNullOrWhiteSpace(newName.LastName))
+                throw new ArgumentException("Last name is required", nameof(newName.LastName));
+
+            Name = newName;
+            Update(DateTime.UtcNow);
+        }
+        public void UpdatePhoto(string photoUrl)
+        {
+            if(string.IsNullOrWhiteSpace(photoUrl))
+                throw new ArgumentException("Photo URL is required", nameof(photoUrl));
+
+            PhotoUrl = photoUrl;
+            Update(DateTime.UtcNow);
+        }
+        public void DeletePhoto()
+        {
+            PhotoUrl = null;
+        }
+        public void UpdateRole(Role newRole, User actingUser)
+        {
+            if(actingUser == null)
+                throw new ArgumentNullException(nameof(actingUser));
+
+            if (actingUser.Role != Role.Broker &&
+                actingUser.Role != Role.Admin &&
+                actingUser.Role != Role.SuperAdmin)
+                throw new InvalidOperationException("No authorization");
+
+            Role = newRole;
+            Update(DateTime.UtcNow);
+        }
+
     }
 }

@@ -22,7 +22,7 @@ namespace RealEstateCRM.Domain.Model
         public decimal TotalArea { get; private set; }
         public byte? YearBuilt { get; private set; }
         public PropertyType PropertyType { get; private set; }
-        public bool IsAvailable { get; private set; }
+        public PropertyStatus PropertyStatus { get; private set; }
         public List<PropertyImage> PropertyImages { get; private set; }
         public List<Comment> Comments { get; private set; }
         public Guid OwnerId { get; private set; }
@@ -54,7 +54,7 @@ namespace RealEstateCRM.Domain.Model
             decimal totalArea,
             byte? yearBuilt,
             PropertyType propertyType,
-            bool isAvailable,
+            PropertyStatus propertystatus,
             Guid ownerId,
             User owner,
             Guid managerId,
@@ -77,7 +77,7 @@ namespace RealEstateCRM.Domain.Model
             TotalArea = totalArea;
             YearBuilt = yearBuilt;
             PropertyType = propertyType;
-            IsAvailable = isAvailable;
+            PropertyStatus = propertystatus;
             OwnerId = ownerId;
             Owner = owner;
             ManagerId = managerId;
