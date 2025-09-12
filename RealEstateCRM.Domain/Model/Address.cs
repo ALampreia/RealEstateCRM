@@ -11,13 +11,13 @@ namespace RealEstateCRM.Domain.Model
     {
         public Guid Id { get; private set; }
         public string AddressLineOne { get; private set; }
-        public string AddressLineTwo { get; private set; }
+        public string? AddressLineTwo { get; private set; }
         public string City { get; private set; }
         public string State { get; private set; }
         public string ZipCode { get; private set; }
         public string Country { get; private set; }
         private Address() { }
-        private Address(string addressLineOne, string addressLineTwo, string city, string state, string zipCode, string country) : this()
+        private Address(string addressLineOne, string? addressLineTwo, string city, string state, string zipCode, string country) : this()
         {
             Id = Guid.NewGuid();
             AddressLineOne = addressLineOne;
@@ -28,12 +28,10 @@ namespace RealEstateCRM.Domain.Model
             Country = country;
         }
 
-        public static Address Create(string addressLineOne, string addressLineTwo, string city, string state, string zipCode, string country)
+        public static Address Create(string addressLineOne, string? addressLineTwo, string city, string state, string zipCode, string country)
         {
             if(string.IsNullOrWhiteSpace(addressLineOne))
                 throw new ArgumentException("Street is required", nameof(addressLineOne));
-            if (string.IsNullOrWhiteSpace(addressLineTwo))
-                throw new ArgumentException("Street is required", nameof(addressLineTwo));
             if (string.IsNullOrWhiteSpace(city))
                 throw new ArgumentException("City is required", nameof(city));
             if(string.IsNullOrWhiteSpace(state))
@@ -46,12 +44,10 @@ namespace RealEstateCRM.Domain.Model
             return new Address(addressLineOne, addressLineTwo, city, state, zipCode, country);
         }
 
-        public void Update(string addressLineOne, string addressLineTwo, string city, string state, string zipCode, string country)
+        public void Update(string addressLineOne, string? addressLineTwo, string city, string state, string zipCode, string country)
         {
             if(string.IsNullOrWhiteSpace(addressLineOne))
                 throw new ArgumentException("Street is required", nameof(addressLineOne));
-            if (string.IsNullOrWhiteSpace(addressLineTwo))
-                throw new ArgumentException("Street is required", nameof(addressLineTwo));
             if (string.IsNullOrWhiteSpace(city))
                 throw new ArgumentException("City is required", nameof(city));
             if(string.IsNullOrWhiteSpace(state))

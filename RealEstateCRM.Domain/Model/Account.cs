@@ -68,7 +68,7 @@ namespace RealEstateCRM.Domain.Model
             if (string.IsNullOrWhiteSpace(passwordSalt))
                 throw new ArgumentException("Password salt is required", nameof(passwordSalt));
 
-            Email = Email;
+            Email = email;
             PasswordHash = passwordHash;
             PasswordSalt = passwordSalt;
             Update(DateTime.UtcNow);

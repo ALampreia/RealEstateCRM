@@ -73,7 +73,7 @@ namespace RealEstateCRM.Domain.Model
 
             Addresses.Add(address);
         }
-        public void UpdateAddress(Guid addressId, string addressLineOne, string AddressLineTwo, string city, string state, string zipCode, string country)
+        public void UpdateAddress(Guid addressId, string addressLineOne, string addressLineTwo, string city, string state, string zipCode, string country)
         {
             Address address = Addresses.FirstOrDefault(a => a.Id == addressId);
                 if(address == null)
@@ -110,6 +110,7 @@ namespace RealEstateCRM.Domain.Model
         public void DeletePhoto()
         {
             PhotoUrl = null;
+            Update(DateTime.UtcNow);
         }
         public void UpdateRole(Role newRole, User actingUser)
         {

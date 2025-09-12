@@ -1,4 +1,5 @@
-﻿using RealEstateCRM.Domain.Model;
+﻿using RealEstateCRM.Domain.Enums;
+using RealEstateCRM.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace RealEstateCRM.Domain.Interfaces
         Task<User?> GetByIdAsync(Guid id);
         Task<User?> GetByEmailAsync(string email);
         Task<IEnumerable<User>> GetAllAsync();
-        Task<IEnumerable<User>> GetByRoleAsync(string role);
+        Task<IEnumerable<User>> GetByRoleAsync(Role role);
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(Guid id);
