@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Domain.Interfaces
 {
-    internal interface IFavoriteRepository
+    public interface IFavoriteRepository
     {
+        Task<Favorite?> GetByIdAsync(Guid id);
+        Task<IEnumerable<Favorite>> GetAllAsync();
+        Task<IEnumerable<Favorite>> GetByUserIdAsync(Guid userId);
+        Task AddAsync(Favorite favorite);
+        Task UpdateAsync(Favorite favorite);
+        Task DeleteAsync(Guid id);
     }
 }
