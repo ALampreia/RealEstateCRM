@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Data.Repositories
 {
-    internal class UserRepository
+    public class UserRepository
     {
     }
 }

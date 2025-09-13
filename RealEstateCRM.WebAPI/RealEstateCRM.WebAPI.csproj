@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateCRM.IoC\RealEstateCRM.IoC.csproj" />
+  </ItemGroup>
+
 </Project>
