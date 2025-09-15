@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using RealEstateCRM.Domain.Enums;
 using RealEstateCRM.Domain.Interfaces;
+using RealEstateCRM.Domain.Model;
 using RealEstateCRM.Services.Security;
 using System;
 using System.Collections.Generic;
@@ -26,10 +28,27 @@ namespace RealEstateCRM.Services.Users
             var (hash, salt) = _passwordHasher.HashPassword(request.Password);
 
             var name = new Name(request.FirstName, request.MiddleNames ?? string.Empty, request.LastName);
+            var contacts = new List<Contact>
+            {
+                new Contact(ContactType.Email, request.Email)
+            };
 
+            var user = User.Create(
+                Guid.NewGuid(),
+                name,
+                contacts,
+                request.Email,
+                hash,
+                salt,
+                request.TaxNumber,
+                Role.Registered
+            );
+
+            await _uow.Users.AddAsync(user);
+            await _uow.SaveChangesAsync();
+
+
+            return user.Id;
         }
-
-
-        return Users.Id;
     }
 }

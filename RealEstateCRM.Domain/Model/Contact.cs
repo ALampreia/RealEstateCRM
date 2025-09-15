@@ -15,5 +15,11 @@ namespace RealEstateCRM.Domain.Model
 
         private Contact() { }
 
+        public Contact(ContactType type, string value)
+        {
+            Type = type;
+            Value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
     }
 }
