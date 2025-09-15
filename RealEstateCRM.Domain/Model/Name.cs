@@ -10,7 +10,7 @@ namespace RealEstateCRM.Domain.Model
     public class Name: AuditableEntity<Guid>
     {
         public string FirstName { get; private set; }
-        public string MiddleNames { get; private set; }
+        public string? MiddleNames { get; private set; }
         public string LastName { get; private set; }
 
         public string FullName => $"{FirstName} {string.Join(" ", MiddleNames)} {LastName}";
@@ -28,9 +28,9 @@ namespace RealEstateCRM.Domain.Model
             LastName = lastName;
         }
 
-        public Name(string firstName, string middleNames, string lastName) : this(firstName, lastName)
+        public Name(string firstName, string? middleNames, string lastName) : this(firstName, lastName)
         {
-            MiddleNames = middleNames;
+            MiddleNames = middleNames ?? string.Empty;
         }
 
         public Name(string fullName) : this(
