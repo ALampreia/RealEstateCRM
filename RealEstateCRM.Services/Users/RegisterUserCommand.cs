@@ -12,11 +12,9 @@ namespace RealEstateCRM.Services.Users
 {
     public class RegisterUserCommand : IRequest<Guid>
     {
-        public string FirstName { get; set; }
-        public string? MiddleNames { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string TaxNumber { get; set; }
-        public List<ContactDto> Contacts { get; set;}
+        public RegisterUserDto UserDto {  get; set; }
+        public RegisterUserCommand(RegisterUserDto userDto)
+        {
+            UserDto = userDto;
+        }
 }

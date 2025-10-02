@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Services.Properties
 {
-    public class UpdateProperty
+    public class UpdatePropertyDto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
