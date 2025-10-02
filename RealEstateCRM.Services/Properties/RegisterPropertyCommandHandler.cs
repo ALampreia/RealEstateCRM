@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.Services.Dtos
+namespace RealEstateCRM.Services.Properties
 {
-    public class FavoriteDto
+    internal class RegisterPropertyCommandHandler
     {
-        public Guid PropertyId { get; set; }
     }
 }

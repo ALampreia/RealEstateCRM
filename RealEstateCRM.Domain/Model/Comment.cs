@@ -56,7 +56,6 @@ namespace RealEstateCRM.Domain.Model
         {
             base.Delete();
         }
-
         public void SetRating(int? rating)
         {
             if (rating.HasValue && (rating < 1 || rating > 5))

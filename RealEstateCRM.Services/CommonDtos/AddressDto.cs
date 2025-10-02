@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Services.Dtos
 {
-    internal class AddressDto
+    public class AddressDto
     {
+        public string AddressLineOne { get; set; }
+        public string? AddressLineTwo { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
+        public string Country { get; set; }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.Services.Dtos
+namespace RealEstateCRM.Services.Properties
 {
-    public class FavoriteDto
+    public class PropertyPhotoDto
     {
-        public Guid PropertyId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using RealEstateCRM.Domain.Enums;
+using RealEstateCRM.Services.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,5 +18,5 @@ namespace RealEstateCRM.Services.Users
         public string Email { get; set; }
         public string Password { get; set; }
         public string TaxNumber { get; set; }
-        public List<Contact> Contacts { get; set;}
+        public List<ContactDto> Contacts { get; set;}
 }
