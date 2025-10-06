@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RealEstateCRM.Services;
 using RealEstateCRM.Data;
-using RealEstateCRM.Domain.Interfaces;
 using RealEstateCRM.Services.Properties;
 using RealEstateCRM.Services.Users;
 
@@ -13,7 +13,9 @@ namespace RealEstateCRM.IoC
         {
             services.AddApplicationServices();
             services.AddData(config);
-            services.AddAutoMapper(typeof(UserProfile).Assembly, typeof(PropertyProfile).Assembly);
+            services.AddAutoMapper(cfg => { }, typeof(UserProfile).Assembly);
+            services.AddAutoMapper(cfg => { }, typeof(PropertyProfile).Assembly);
+
         }
     }
 }

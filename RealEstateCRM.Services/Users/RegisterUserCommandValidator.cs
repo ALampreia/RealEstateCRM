@@ -11,11 +11,11 @@ namespace RealEstateCRM.Services.Users
     {
         public RegisterUserCommandValidator() 
         {
-            RuleFor(x => x.FirstName).NotEmpty();
-            RuleFor(x => x.LastName).NotEmpty();
-            RuleFor(x => x.Email).NotEmpty().EmailAddress();
-            RuleFor(x => x.Password).NotEmpty().MinimumLength(4);
-            RuleFor(x => x.TaxNumber).NotEmpty();
+            RuleFor(x => x.UserDto.FirstName).NotEmpty();
+            RuleFor(x => x.UserDto.LastName).NotEmpty();
+            RuleFor(x => x.UserDto.Email).NotEmpty().EmailAddress();
+            RuleFor(x => x.UserDto.Password).NotEmpty().MinimumLength(4);
+            RuleFor(x => x.UserDto.TaxNumber).NotEmpty();
         }
     }
 }

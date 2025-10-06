@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Services.Properties
 {
-    internal class UpdatePropertyCommandHandler
+    public class UpdatePropertyCommandHandler
     {
     }
 }

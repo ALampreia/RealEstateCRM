@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Services.Properties
 {
-    internal class RegisterPropertyCommandValidator
+    public class RegisterPropertyCommandValidator
     {
+
     }
 }

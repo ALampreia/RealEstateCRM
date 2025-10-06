@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateCRM.Services.Properties
 {
-    internal class DeletePropertyCommandHandler
+    public class DeletePropertyCommandHandler
     {
     }
 }
