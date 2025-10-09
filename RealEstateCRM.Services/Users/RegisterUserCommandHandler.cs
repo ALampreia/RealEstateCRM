@@ -29,16 +29,15 @@ namespace RealEstateCRM.Services.Users
         public async Task<Guid> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             var dto = request.UserDto;
-            var (hash, salt) = _passwordHasher.HashPassword((string)dto.Password);
-
-            var name = new Name(dto.FirstName, dto.MiddleNames ?? string.Empty, dto.LastName);
+            var name = _mapper.Map<Name>(dto.Name);
             var contacts = _mapper.Map<List<Contact>>(dto.Contacts);
-
+            var (hash, salt) = _passwordHasher.HashPassword(dto.Account.Password);
+            
             var user = User.Create(
                 Guid.NewGuid(),
                 name,
                 contacts,
-                dto.Email,
+                dto.Account.Email,
                 hash,
                 salt,
                 dto.TaxNumber,

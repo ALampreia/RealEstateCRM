@@ -1,4 +1,5 @@
-﻿using RealEstateCRM.Services.Dtos;
+﻿using RealEstateCRM.Services.CommonDtos;
+using RealEstateCRM.Services.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,8 @@ namespace RealEstateCRM.Services.Users
 {
     public class RegisterUserDto
     {
-        public string FirstName { get; set; }
-        public string? MiddleNames { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public NameDto Name {  get; set; }
+        public AccountDto Account { get; set; }
         public string TaxNumber { get; set; }
         public List<ContactDto> Contacts { get; set; }
         public List<AddressDto>? Addresses { get; set; }

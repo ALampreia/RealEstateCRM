@@ -1,4 +1,5 @@
-﻿using RealEstateCRM.Services.Dtos;
+﻿using RealEstateCRM.Services.CommonDtos;
+using RealEstateCRM.Services.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,8 @@ namespace RealEstateCRM.Services.Users
     public class UpdateUserDto
     {
         public Guid Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? MiddleNames { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
+        public NameDto? NameDto { get; set; }
+        public AccountDto? AccountDto { get; set; }
         public string? TaxNumber { get; set; }
         public List<ContactDto>? Contacts { get; set; }
         public List<AddressDto>? Addresses { get; set; }

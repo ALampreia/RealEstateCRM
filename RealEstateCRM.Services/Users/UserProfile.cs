@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RealEstateCRM.Domain.Model;
+using RealEstateCRM.Services.CommonDtos;
 using RealEstateCRM.Services.Dtos;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace RealEstateCRM.Services.Users
         {
             CreateMap<ContactDto, Contact>();
             CreateMap<AddressDto, Address>();
+            CreateMap<AccountDto,  Account>();
+            CreateMap<NameDto, Name>();
         }
     }
 }

@@ -11,7 +11,9 @@ namespace RealEstateCRM.Services.Properties
     {
         public RegisterPropertyCommandValidator()
         {
-            RuleFor(x => x.PropertyDto.AddressDto.).NotEmpty();
+            RuleFor(x => x.PropertyDto.Address)
+                .NotNull()
+                .SetValidator(new AddressDtoValidator);
         }
     }
 }
