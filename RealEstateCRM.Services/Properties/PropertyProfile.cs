@@ -13,13 +13,10 @@ namespace RealEstateCRM.Services.Properties
     {
         public PropertyProfile() 
         {
-            CreateMap<RegisterPropertyDto, Property>()
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
-                .ForMember(dest => dest.PropertyImages, opt => opt.MapFrom(src => src.PropertyPhotos))
-                .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src => src.Amenities ?? new List<string>()));
-
+            CreateMap<RegisterPropertyDto, Property>();
             CreateMap<AddressDto, Address>();
             CreateMap<PropertyPhotoDto, PropertyImage>();
+            CreateMap<UpdatePropertyDto, Property>();
         }
 
     }

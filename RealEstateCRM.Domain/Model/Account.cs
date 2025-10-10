@@ -75,6 +75,18 @@ namespace RealEstateCRM.Domain.Model
 
         }
 
+        public void UpdatePassword(string passwordHash, string passwordSalt)
+        {
+            if (string.IsNullOrWhiteSpace(passwordHash))
+                throw new ArgumentException("Password Hash is required", nameof(passwordHash));
+            if (string.IsNullOrWhiteSpace(passwordSalt))
+                throw new ArgumentException("Password Salt is required", nameof(passwordSalt));
+
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
+            Update(DateTime.UtcNow);
+        }
+
         public void Delete()
         {
             base.Delete();

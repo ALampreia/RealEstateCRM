@@ -16,12 +16,18 @@ namespace RealEstateCRM.Services.Users
             RuleFor(x => x.UserDto.Name)
                 .NotNull()
                 .SetValidator(new NameDtoValidator());
+
             RuleFor(x => x.UserDto.Account)
                 .NotNull()
                 .SetValidator(new AccountDtoValidator());
-            RuleFor(x => x.UserDto.Contacts).NotEmpty();
+
+            RuleFor(x => x.UserDto.Contacts).NotEmpty().NotNull();
             RuleFor(x => x.UserDto.TaxNumber).NotEmpty();
 
+            When(x => x.UserDto.Addresses != null, () =>
+            {
+                RuleForEach(x => x.UserDto.Addresses).SetValidator(new AddressDtoValidator());
+            });
         }
     }
 }

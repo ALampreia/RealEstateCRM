@@ -18,6 +18,7 @@ namespace RealEstateCRM.Services.Users
             CreateMap<AddressDto, Address>();
             CreateMap<AccountDto,  Account>();
             CreateMap<NameDto, Name>();
+            CreateMap<FavoriteDto, Favorite>();
         }
     }
 }
