@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateCRM.Services.Dtos
+namespace RealEstateCRM.Services.Favorites
 {
-    public class FavoriteDto
+   
+    public class AddFavoriteDto
     {
+        public Guid UserId { get; set; }
         public Guid PropertyId { get; set; }
     }
+    
 }

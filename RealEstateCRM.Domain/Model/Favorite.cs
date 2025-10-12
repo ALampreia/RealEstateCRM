@@ -9,7 +9,7 @@ namespace RealEstateCRM.Domain.Model
 {
     public class Favorite : AuditableEntity<Guid>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public User User { get; set; }
         public Guid PropertyId { get; set; }
