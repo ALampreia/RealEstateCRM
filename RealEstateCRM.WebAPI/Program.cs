@@ -12,6 +12,16 @@ namespace RealEstateCRM.WebAPI
             // Add services to the container.
             var config = builder.Configuration;
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("FrontendPolicy", policy =>
+                {
+                    policy.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+                });
+            });
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -32,11 +42,17 @@ namespace RealEstateCRM.WebAPI
 
             app.UseHttpsRedirection();
 
+            app.UseCors("FrontendPolicy");
+
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.MapControllers();
+
+            app.MapFallbackToFile("index.html");
 
             app.Run();
         }
