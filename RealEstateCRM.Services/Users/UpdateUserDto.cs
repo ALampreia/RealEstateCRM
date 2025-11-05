@@ -16,7 +16,6 @@ namespace RealEstateCRM.Services.Users
         public string? TaxNumber { get; set; }
         public List<ContactDto>? Contacts { get; set; }
         public List<AddressDto>? Addresses { get; set; }
-        public List<FavoriteDto>? Favorites { get; set; }
         public string? PhotoUrl { get; set; }
 
 
